@@ -1,0 +1,21 @@
+/* Home */
+
+body {
+  background-image: url("./image/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Maven Pro", sans-serif;
+}
+
+.home_container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.home_title {
+  font-size: 100px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
