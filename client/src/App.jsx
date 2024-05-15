@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="app_container">
-      <h1 className="app_title">LUCAVENGERS</h1>
+      <h1 className="home_title">LUCAVENGERS</h1>
       <SearchBar onCharacterSelect={handleCharacterSelect} />
       <MarvelAPI
         searchTerm={searchTerm}

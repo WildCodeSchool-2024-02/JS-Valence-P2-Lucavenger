@@ -1,16 +1,16 @@
 .character-card {
-  padding: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 25rem;
   color: white;
+  background-color: black;
+  margin-left: 2rem;
+  margin-top: 5rem;
 }
 
 .character-image {
   width: 100%;
-  height: auto;
-  margin-top: 2rem; /* Utilisation d'une unité de mesure relative */
 }
 
 .character-image-container {
@@ -18,8 +18,4 @@
   margin-top: 3.5rem; /* Utilisation d'une unité de mesure relative */
   margin-left: 2rem; /* Utilisation d'une unité de mesure relative */
   transform: translateY(-50%);
-}
-
-.character_info {
-  width: 50rem;
 }
