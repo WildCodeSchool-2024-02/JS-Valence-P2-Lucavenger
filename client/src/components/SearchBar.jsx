@@ -15,7 +15,7 @@ function SearchBar() {
           className="search-bar-input"
         />
         <img
-          src="./image/search.png"
+          src="./client/src/components/image/loupe.png"
           alt="Rechercher"
           className="search-bar-button"
         />

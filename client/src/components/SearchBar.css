@@ -12,18 +12,18 @@
   align-items: center;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 20rem;
+  width: 34.375rem;
 }
 
 .search-bar-input {
   border: none;
   border-radius: 20px;
-  width: 15rem;
+  width: 34.375rem;
 }
 
 .search-bar-button {
   width: 30px;
-  height: 30px;
+  height: 2.1875rem;
   cursor: pointer;
   margin-left: 1rem;
 }
