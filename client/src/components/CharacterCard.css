@@ -1,0 +1,25 @@
+.character-card {
+  padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25rem;
+  color: white;
+}
+
+.character-image {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem; /* Utilisation d'une unité de mesure relative */
+}
+
+.character-image-container {
+  position: relative; /* Utilisation de la position relative pour le positionnement de l'image */
+  margin-top: 3.5rem; /* Utilisation d'une unité de mesure relative */
+  margin-left: 2rem; /* Utilisation d'une unité de mesure relative */
+  transform: translateY(-50%);
+}
+
+.character_info {
+  width: 50rem;
+}

@@ -1,0 +1,20 @@
+.description-card {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 30%;
+  margin-left: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  left: 900px;
+  top: -500px;
+}
+
+.description-text {
+  font-size: 16px;
+  color: black;
+}
