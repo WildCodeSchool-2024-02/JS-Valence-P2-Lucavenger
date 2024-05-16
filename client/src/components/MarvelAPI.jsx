@@ -48,8 +48,8 @@ function MarvelAPI({ searchTerm, onCharacterSelect }) {
           className="search-result"
           onClick={() => handleCharacterSelect(character)}
           onKeyDown={(event) => handleKeyPress(event, character)}
-          tabIndex={0} // Make the div focusable
-          role="button" // Define the role as a button
+          tabIndex={0}
+          role="button"
         >
           <img
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}

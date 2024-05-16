@@ -15,8 +15,8 @@
 }
 
 .character-image-container {
-  position: relative; /* Utilisation de la position relative pour le positionnement de l'image */
-  margin-top: 3.5rem; /* Utilisation d'une unité de mesure relative */
-  margin-left: 2rem; /* Utilisation d'une unité de mesure relative */
+  position: relative;
+  margin-top: 3.5rem;
+  margin-left: 2rem;
   transform: translateY(-50%);
 }

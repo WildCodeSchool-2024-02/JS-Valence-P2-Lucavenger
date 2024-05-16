@@ -4,7 +4,7 @@ import MarvelAPI from "./MarvelAPI";
 import SearchBar from "./SearchBar";
 import CharacterCard from "./CharacterCard";
 import Description from "./Description";
-import Comics from "./Comics"; // Importe le composant Comics
+import Comics from "./Comics";
 
 function Home() {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -31,7 +31,6 @@ function Home() {
           <CharacterCard character={selectedCharacter} />
           <Description description={selectedCharacter.description} />
           <Comics characterId={selectedCharacter.id} />{" "}
-          {/* Pass the characterId */}
         </div>
       )}
     </div>

@@ -22,7 +22,14 @@ function Comics({ characterId }) {
     axios
       .get(url)
       .then((response) => {
-        setComics(response.data.data.results);
+        // Filtrer les comics sans images
+        const filteredComics = response.data.data.results.filter(
+          (comic) =>
+            comic.thumbnail &&
+            `${comic.thumbnail.path}.${comic.thumbnail.extension}` !==
+              "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+        );
+        setComics(filteredComics);
       })
       .catch((error) => {
         console.error("Error fetching comics:", error);
