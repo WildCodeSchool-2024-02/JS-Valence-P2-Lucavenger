@@ -1,0 +1,31 @@
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar {
+  width: 20rem;
+  border-radius: 20px;
+  border: lightgrey;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  width: fit-content;
+  max-width: 20rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 10;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.search-suggestions-item {
+  padding: 8px;
+  cursor: pointer;
+}

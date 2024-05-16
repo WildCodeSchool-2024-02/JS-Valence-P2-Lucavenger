@@ -1,0 +1,22 @@
+.comics-container {
+  margin-top: 20px;
+}
+
+.comics-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.comic-item {
+  text-align: center;
+}
+
+.comic-image img {
+  width: 12rem;
+  height: auto;
+}
+
+p {
+  color: white;
+}

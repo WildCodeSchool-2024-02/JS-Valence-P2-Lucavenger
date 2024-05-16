@@ -1,0 +1,22 @@
+.character-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25rem;
+  color: white;
+  background-color: black;
+  margin-left: 2rem;
+  margin-top: 5rem;
+}
+
+.character-image {
+  max-width: 20rem;
+  border-radius: 20px;
+}
+
+.character-image-container {
+  position: relative;
+  margin-top: 3.5rem;
+  margin-left: 2rem;
+  transform: translateY(-50%);
+}

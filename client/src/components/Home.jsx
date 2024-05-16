@@ -1,24 +1,27 @@
 import { useState } from "react";
-import "./App.css";
-import MarvelAPI from "./components/MarvelAPI";
-import SearchBar from "./components/SearchBar";
-import CharacterCard from "./components/CharacterCard";
-import Description from "./components/Description";
-import Comics from "./components/Comics"; // Importe le composant Comics
-import "./components/Home.css";
+import "./Home.css";
+import MarvelAPI from "./MarvelAPI";
+import SearchBar from "./SearchBar";
+import CharacterCard from "./CharacterCard";
+import Description from "./Description";
+import Comics from "./Comics";
 
-function App() {
+function Home() {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [searchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
 
   const handleCharacterSelect = (character) => {
     setSelectedCharacter(character);
   };
 
   return (
-    <div className="app_container">
+    <div className="home_container">
       <h1 className="home_title">LUCAVENGERS</h1>
-      <SearchBar onCharacterSelect={handleCharacterSelect} />
+      <SearchBar onSearch={handleSearch} />
       <MarvelAPI
         searchTerm={searchTerm}
         onCharacterSelect={handleCharacterSelect}
@@ -28,11 +31,10 @@ function App() {
           <CharacterCard character={selectedCharacter} />
           <Description description={selectedCharacter.description} />
           <Comics characterId={selectedCharacter.id} />{" "}
-          {/* Render Comics with characterId */}
         </div>
       )}
     </div>
   );
 }
 
-export default App;
+export default Home;
