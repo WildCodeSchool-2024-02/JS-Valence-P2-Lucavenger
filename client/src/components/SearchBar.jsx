@@ -39,8 +39,14 @@ function SearchBar({ onCharacterSelect }) {
     axios
       .get(url)
       .then((response) => {
-        const characters = response.data.data.results;
-        setSuggestions(characters);
+        // Filtre personnages san images
+        const filteredCharacters = response.data.data.results.filter(
+          (character) =>
+            character.thumbnail &&
+            `${character.thumbnail.path}.${character.thumbnail.extension}` !==
+              "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+        );
+        setSuggestions(filteredCharacters);
       })
       .catch((error) => {
         console.error("Error fetching character suggestions:", error);
