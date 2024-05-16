@@ -62,8 +62,9 @@ function SearchBar({ onCharacterSelect }) {
   return (
     <div className="search-container" ref={searchRef}>
       <input
+        className="search-bar"
         type="text"
-        placeholder="Search character..."
+        placeholder="  Recherche ton héro Marvel"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
@@ -75,8 +76,8 @@ function SearchBar({ onCharacterSelect }) {
               className="search-suggestions-item"
               onClick={() => handleSelectCharacter(character)}
               onKeyDown={(e) => handleKeyPress(e, character)}
-              tabIndex={0} // Make the div focusable
-              role="button" // Define the role as a button
+              tabIndex={0}
+              role="button"
             >
               {character.name}
             </div>

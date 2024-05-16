@@ -10,7 +10,8 @@
 }
 
 .character-image {
-  width: 100%;
+  max-width: 20rem;
+  border-radius: 20px;
 }
 
 .character-image-container {

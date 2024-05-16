@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+.search-bar {
+  width: 20rem;
+  border-radius: 20px;
+  border: lightgrey;
+}
+
 .search-suggestions {
   position: absolute;
   top: calc(100% + 8px);

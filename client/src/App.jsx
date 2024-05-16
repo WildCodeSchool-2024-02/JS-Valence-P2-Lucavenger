@@ -4,6 +4,7 @@ import MarvelAPI from "./components/MarvelAPI";
 import SearchBar from "./components/SearchBar";
 import CharacterCard from "./components/CharacterCard";
 import Description from "./components/Description";
+import Comics from "./components/Comics"; // Importe le composant Comics
 import "./components/Home.css";
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <div className="character_info">
           <CharacterCard character={selectedCharacter} />
           <Description description={selectedCharacter.description} />
+          <Comics characterId={selectedCharacter.id} />{" "}
+          {/* Render Comics with characterId */}
         </div>
       )}
     </div>

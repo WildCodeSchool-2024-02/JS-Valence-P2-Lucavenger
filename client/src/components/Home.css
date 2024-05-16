@@ -2,14 +2,16 @@ body {
   background-image: url("./image/background.png");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Maven Pro", sans-serif;
-  position: sticky;
+  margin: 0;
 }
 
 .home_title {
-  font-size: 2rem;
+  font-size: 3rem;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem;
 }
