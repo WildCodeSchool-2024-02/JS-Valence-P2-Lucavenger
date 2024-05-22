@@ -11,7 +11,7 @@ function HomePage() {
     setSuggestions(characters);
   };
 
-  const pageTitle = "LucAvenger";
+  const pageTitle = "LUCAVENGER";
 
   return (
     <div className="home-page">

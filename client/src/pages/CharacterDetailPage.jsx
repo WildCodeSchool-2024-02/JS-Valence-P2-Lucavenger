@@ -3,7 +3,7 @@ import ColorThief from "colorthief";
 import CryptoJS from "crypto-js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../Styles/CharactereDetail.css";
+import "../Styles/CharactereDetail.css"; // Assurez-vous que le nom du fichier CSS est correct
 import Comics from "../components/Comics";
 import Loading from "../components/Loading";
 import SearchBar from "../components/SearchBar";
@@ -15,7 +15,6 @@ function CharacterDetailPage() {
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
   const [bgColor, setBgColor] = useState("#000");
-
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
@@ -25,7 +24,6 @@ function CharacterDetailPage() {
         const hash = CryptoJS.MD5(
           `${timestamp}${PRIVATE_KEY}${PUBLIC_KEY}`
         ).toString();
-
         const response = await axios.get(
           `https://gateway.marvel.com/v1/public/characters/${characterId}`,
           {
@@ -36,13 +34,10 @@ function CharacterDetailPage() {
             },
           }
         );
-
         setCharacter(response.data.data.results[0]);
-
         const img = new Image();
         img.crossOrigin = "Anonymous";
         img.src = `${response.data.data.results[0].thumbnail.path}.${response.data.data.results[0].thumbnail.extension}`;
-
         img.onload = () => {
           const colorThief = new ColorThief();
           const dominantColor = colorThief.getColor(img);
@@ -54,10 +49,8 @@ function CharacterDetailPage() {
         setLoading(false);
       }
     };
-
     fetchCharacter();
   }, [characterId]);
-
   const handleSearch = async (query) => {
     try {
       const characters = await getCharacters(query);
@@ -66,19 +59,15 @@ function CharacterDetailPage() {
       console.error("Erreur lors de la récupération des suggestions:", error);
     }
   };
-
   const handleSuggestionClick = () => {
     setSuggestions([]);
   };
-
   if (loading) {
     return <Loading />;
   }
-
   return (
     <div className="character-details">
       <div className="background-filter" style={{ backgroundColor: bgColor }} />
-      <h1>LucAvenger</h1>
       <SearchBar
         onSearch={handleSearch}
         suggestions={suggestions}
@@ -86,13 +75,18 @@ function CharacterDetailPage() {
       />
       {character && (
         <>
-          <h2>{character.name}</h2>
           <div className="character-info">
-            <img
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
-            <p>{character.description}</p>
+            <div className="imageBox">
+              <img
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt={character.name}
+                className="character-image"
+              />
+            </div>
+            <div className="character-description">
+              <h2>{character.name}</h2>
+              <p>{character.description}</p>
+            </div>
           </div>
           <Comics characterId={character.id} />
         </>
@@ -100,5 +94,4 @@ function CharacterDetailPage() {
     </div>
   );
 }
-
 export default CharacterDetailPage;

@@ -25,31 +25,33 @@ function SearchBar({ onSearch, suggestions, onSuggestionClick }) {
   );
 
   return (
-    <div className="search-bar">
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Rechercher un personnage Marvel..."
-      />
-      {filteredSuggestions.length > 0 && (
-        <ul className="suggestion-list">
-          {filteredSuggestions.map((character) => (
-            <li key={character.id}>
-              <Link
-                to={`/character/${character.id}`}
-                onClick={() => handleSuggestionClick(character)}
-              >
-                <img
-                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                  alt={character.name}
-                />
-                {character.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="search-container">
+      <div className="search-bar">
+        <input
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          placeholder="Rechercher un personnage Marvel..."
+        />
+        {filteredSuggestions.length > 0 && (
+          <ul className="suggestion-list">
+            {filteredSuggestions.map((character) => (
+              <li key={character.id}>
+                <Link
+                  to={`/character/${character.id}`}
+                  onClick={() => handleSuggestionClick(character)}
+                >
+                  <img
+                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                    alt={character.name}
+                  />
+                  {character.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
