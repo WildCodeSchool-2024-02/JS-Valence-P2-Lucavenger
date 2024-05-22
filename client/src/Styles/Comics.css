@@ -1,0 +1,48 @@
+/* Comics.css */
+
+.comics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comics h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.comics-list {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+}
+
+.comic-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comic-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.comic-item p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+@media screen and (min-width: 500px) {
+  .comics-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
