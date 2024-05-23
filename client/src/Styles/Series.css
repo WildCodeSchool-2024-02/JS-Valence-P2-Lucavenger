@@ -1,0 +1,54 @@
+.series-list {
+  margin-top: 20px;
+}
+
+.series-list h3 {
+  font-family: "Marvel", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.series-item {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.series-image {
+  max-width: 200px;
+  width: 15rem;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+h4 {
+  color: #fff;
+  margin-bottom: 2rem;
+  font-family: "Marvel", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 500px) {
+  .series-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .series-image {
+    width: 10rem;
+  }
+  div.series-list {
+    text-align: center;
+    width: 100%;
+  }
+}

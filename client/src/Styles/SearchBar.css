@@ -1,0 +1,17 @@
+/* SearchBar.css */
+.search-bar {
+  position: relative;
+  width: auto;
+}
+.search-bar input {
+  border: none;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.suggestion-list img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 4px; /* Coins arrondis pour l'image */
+}

@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Marvel:wght@700&display=swap");
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5rem;
+}
+p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+li p {
+  flex-grow: 1;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.background-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+  filter: brightness(50%) contrast(80%);
+}
+
+.character-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.character-info img {
+  width: 300px;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+.character-info p {
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .character-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .character-info img {
+    max-width: 100%;
+  }
+}
