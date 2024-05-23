@@ -38,18 +38,18 @@ function Series({ characterId }) {
   return (
     <div className="series-list">
       <h3>Séries</h3>
-      <ul>
+      <div className="series-grid">
         {filteredSeries.map((serie) => (
-          <li key={serie.id}>
+          <div key={serie.id} className="series-item">
+            <h4>{serie.title}</h4>
             <img
               src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
               alt={serie.title}
               className="series-image"
             />
-            <h4>{serie.title}</h4>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
