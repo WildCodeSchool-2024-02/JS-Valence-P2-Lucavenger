@@ -47,7 +47,6 @@ function Series({ characterId }) {
               alt={serie.title}
               className="series-image"
             />
-            <p>{serie.description || "Pas de description disponible."}</p>
           </li>
         ))}
       </ul>
