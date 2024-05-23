@@ -1,6 +1,6 @@
-import PropTypes from "prop-types"; // Importer PropTypes
+import PropTypes from "prop-types";
 import "../Styles/NavBar.css";
-import avengersLogo from "../assets/images/Logo Avengers transparent.png"; // Importez votre image du logo des Avengers
+import avengersLogo from "../assets/images/Logo Avengers transparent.png";
 import SearchBar from "./SearchBar";
 
 function NavBar({ onSearch, suggestions, onSuggestionClick }) {
@@ -25,8 +25,8 @@ NavBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
   suggestions: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired, // Remplacez par les propriétés réelles de votre objet suggestion
-      name: PropTypes.string.isRequired, // Exemple de propriétés
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
     })
   ).isRequired,
   onSuggestionClick: PropTypes.func.isRequired,

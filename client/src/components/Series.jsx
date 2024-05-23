@@ -7,6 +7,9 @@ function Series({ characterId }) {
   const [series, setSeries] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const unwantedImageUrl =
+    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
+
   useEffect(() => {
     const fetchSeriesData = async () => {
       try {
@@ -26,11 +29,17 @@ function Series({ characterId }) {
     return <p>Chargement des séries...</p>;
   }
 
+  const filteredSeries = series.filter(
+    (serie) =>
+      `${serie.thumbnail.path}.${serie.thumbnail.extension}` !==
+      unwantedImageUrl
+  );
+
   return (
     <div className="series-list">
       <h3>Séries</h3>
       <ul>
-        {series.map((serie) => (
+        {filteredSeries.map((serie) => (
           <li key={serie.id}>
             <h4>{serie.title}</h4>
             <img

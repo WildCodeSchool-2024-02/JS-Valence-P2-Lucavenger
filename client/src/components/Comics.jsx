@@ -4,9 +4,11 @@ import "../Styles/Comics.css";
 import { fetchCharacterComics } from "../services/Api";
 
 function Comics({ characterId }) {
-  // Notez la déclaration de fonction ici
   const [comics, setComics] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const unwantedImageUrl =
+    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
 
   useEffect(() => {
     const fetchComics = async () => {
@@ -27,11 +29,17 @@ function Comics({ characterId }) {
     return <p>Chargement des comics...</p>;
   }
 
+  const filteredComics = comics.filter(
+    (comic) =>
+      `${comic.thumbnail.path}.${comic.thumbnail.extension}` !==
+      unwantedImageUrl
+  );
+
   return (
     <div className="comics">
       <h2>Comics</h2>
       <div className="comics-list">
-        {comics.map((comic) => (
+        {filteredComics.map((comic) => (
           <div key={comic.id} className="comic-item">
             <img
               src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}

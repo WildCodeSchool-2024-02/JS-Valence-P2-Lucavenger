@@ -7,7 +7,7 @@ function SearchBar({ onSearch, suggestions, onSuggestionClick }) {
   const [query, setQuery] = useState("");
 
   const handleInputChange = ({ target }) => {
-    const { value } = target; // Utilisation de la destructuration d'objet
+    const { value } = target;
     setQuery(value);
     onSearch(value);
   };
