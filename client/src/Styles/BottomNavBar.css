@@ -8,8 +8,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: white;
   text-decoration: none;
+  font-family: "Marvel", sans-serif;
+  font-weight: bold;
+  letter-spacing: 10px;
+  font-size: 1rem;
 }
 
 .filter-option:hover {
@@ -19,17 +23,25 @@
 .filter-option .filter-label {
   margin-top: 5px;
 }
-.filter-ball {
+.filter-ball1 {
   margin: 30px;
   padding: 40px;
-  background-color: #ffc9c9;
+  background: url("../assets/images/ComicLogo.jpg") no-repeat center
+    center/cover;
+  border-radius: 100px;
+}
+.filter-ball2 {
+  margin: 30px;
+  padding: 40px;
+  background: url("../assets/images/MovieLogo.jpg") no-repeat center
+    center/cover;
   border-radius: 100px;
 }
 @media screen and (max-width: 500px) {
-  .filter-ball {
+  .filter-ball1,
+  .filter-ball2 {
     margin: 20px;
     padding: 25px;
-    background-color: #ffc9c9;
     border-radius: 100px;
   }
 }

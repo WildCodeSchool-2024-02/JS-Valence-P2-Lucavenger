@@ -112,4 +112,15 @@
       line-height: 1.6;
     }
   }
+  @media screen and (max-width: 350px) {
+    .first-part,
+    .second-part {
+      font-size: 30px;
+      background: linear-gradient(to bottom, #afb2af, #545554);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      line-height: 1.6;
+    }
+  }
 }

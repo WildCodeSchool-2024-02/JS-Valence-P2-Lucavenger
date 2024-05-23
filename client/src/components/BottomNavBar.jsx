@@ -9,24 +9,17 @@ function BottomNavBar({ handleFilterChange }) {
     <div className="bottom-nav-bar">
       <Link
         className="filter-option"
-        to={{ pathname: location.pathname, search: "?filter=all" }}
-        onClick={() => handleFilterChange("all")}
-      >
-        <div className="filter-ball">T</div>
-      </Link>
-      <Link
-        className="filter-option"
         to={{ pathname: location.pathname, search: "?filter=comics" }}
         onClick={() => handleFilterChange("comics")}
       >
-        <div className="filter-ball">C</div>
+        <div className="filter-ball1">C</div>
       </Link>
       <Link
         className="filter-option"
         to={{ pathname: location.pathname, search: "?filter=series" }}
         onClick={() => handleFilterChange("series")}
       >
-        <div className="filter-ball">S</div>
+        <div className="filter-ball2">S</div>
       </Link>
     </div>
   );
