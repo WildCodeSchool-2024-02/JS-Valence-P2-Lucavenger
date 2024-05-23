@@ -23,3 +23,8 @@
   display: block;
   margin-bottom: 10px;
 }
+
+img.series-image {
+  width: 10rem;
+  border-radius: 15px;
+}

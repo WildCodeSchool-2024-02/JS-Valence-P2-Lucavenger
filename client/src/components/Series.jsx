@@ -41,12 +41,12 @@ function Series({ characterId }) {
       <ul>
         {filteredSeries.map((serie) => (
           <li key={serie.id}>
-            <h4>{serie.title}</h4>
             <img
               src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
               alt={serie.title}
               className="series-image"
             />
+            <h4>{serie.title}</h4>
           </li>
         ))}
       </ul>
