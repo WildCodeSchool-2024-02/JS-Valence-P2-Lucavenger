@@ -1,8 +1,8 @@
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
-const PUBLIC_KEY = "802465d01a9194dcef2b3def7f3eeeb5";
-const PRIVATE_KEY = "f04d78d769814078851b5f2a176e86c3ab919ad6";
+const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY;
 
 const api = axios.create({
   baseURL: "https://gateway.marvel.com/v1/public/",
