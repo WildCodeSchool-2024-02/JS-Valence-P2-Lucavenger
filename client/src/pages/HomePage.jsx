@@ -11,13 +11,19 @@ function HomePage() {
     setSuggestions(characters);
   };
 
+  const handleSuggestionClick = () => {};
+
   const pageTitle = "LUCAVENGER";
 
   return (
     <div className="home-page">
       <div className="background" />
       <h1>{pageTitle}</h1>
-      <SearchBar onSearch={searchCharacters} suggestions={suggestions} />
+      <SearchBar
+        onSearch={searchCharacters}
+        suggestions={suggestions}
+        onSuggestionClick={handleSuggestionClick} // Assurez-vous de passer cette prop
+      />
     </div>
   );
 }

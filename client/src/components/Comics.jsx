@@ -1,30 +1,31 @@
-import axios from "axios";
-import CryptoJS from "crypto-js";
-import PropTypes from "prop-types"; // Importer PropTypes
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "../Styles/Comics.css";
+import { fetchCharacterComics } from "../services/Api";
 
 function Comics({ characterId }) {
+  // Notez la déclaration de fonction ici
   const [comics, setComics] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!characterId) return;
+    const fetchComics = async () => {
+      try {
+        const comicsData = await fetchCharacterComics(characterId);
+        setComics(comicsData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des comics:", error);
+        setLoading(false);
+      }
+    };
 
-    const publicKey = "d48b70dc690340116472afc5b02aa14b";
-    const privateKey = "c09e9c38566391defe2a6c0f74386a57a394e501";
-    const timestamp = Date.now().toString();
-    const hash = CryptoJS.MD5(timestamp + privateKey + publicKey).toString();
-    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
-
-    axios
-      .get(url)
-      .then((response) => {
-        setComics(response.data.data.results);
-      })
-      .catch((error) => {
-        console.error("Error fetching comics:", error);
-      });
+    fetchComics();
   }, [characterId]);
+
+  if (loading) {
+    return <p>Chargement des comics...</p>;
+  }
 
   return (
     <div className="comics">

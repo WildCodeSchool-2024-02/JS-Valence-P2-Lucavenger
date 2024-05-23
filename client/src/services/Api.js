@@ -1,5 +1,3 @@
-// Api.js
-
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
@@ -10,45 +8,86 @@ const api = axios.create({
   baseURL: "https://gateway.marvel.com/v1/public/",
 });
 
-const getCharacters = async (query) => {
+const generateHash = () => {
   const timestamp = new Date().getTime().toString();
-  const hash = CryptoJS.MD5(timestamp + PRIVATE_KEY + PUBLIC_KEY).toString();
+  const hash = CryptoJS.MD5(
+    `${timestamp}${PRIVATE_KEY}${PUBLIC_KEY}`
+  ).toString();
+  return { ts: timestamp, hash };
+};
 
+const getCharacters = async (query) => {
   try {
+    const { ts, hash } = generateHash();
     const response = await api.get("characters", {
       params: {
         apikey: PUBLIC_KEY,
-        ts: timestamp,
+        ts,
         hash,
-        nameStartsWith: query || "", // Vérifiez si la requête est définie, sinon, laissez-la vide
+        nameStartsWith: query || "",
       },
     });
-
     return response.data.data.results;
   } catch (error) {
     console.error("Erreur lors de la recherche de personnages:", error);
-    throw error; // Relancez l'erreur pour la capturer et la gérer correctement
+    throw error;
   }
 };
 
 const fetchCharacter = async (characterId) => {
-  const timestamp = new Date().getTime().toString();
-  const hash = CryptoJS.MD5(timestamp + PRIVATE_KEY + PUBLIC_KEY).toString();
-
   try {
+    const { ts, hash } = generateHash();
     const response = await api.get(`characters/${characterId}`, {
       params: {
         apikey: PUBLIC_KEY,
-        ts: timestamp,
+        ts,
         hash,
       },
     });
-
     return response.data.data.results[0];
   } catch (error) {
     console.error("Erreur lors de la récupération du personnage:", error);
-    throw error; // Relancez l'erreur pour la capturer et la gérer correctement
+    throw error;
   }
 };
 
-export { fetchCharacter, getCharacters };
+const fetchCharacterComics = async (characterId) => {
+  try {
+    const { ts, hash } = generateHash();
+    const response = await api.get(`characters/${characterId}/comics`, {
+      params: {
+        apikey: PUBLIC_KEY,
+        ts,
+        hash,
+      },
+    });
+    return response.data.data.results;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des comics:", error);
+    throw error;
+  }
+};
+
+const fetchCharacterSeries = async (characterId) => {
+  try {
+    const { ts, hash } = generateHash();
+    const response = await api.get(`characters/${characterId}/series`, {
+      params: {
+        apikey: PUBLIC_KEY,
+        ts,
+        hash,
+      },
+    });
+    return response.data.data.results;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des séries:", error);
+    throw error;
+  }
+};
+
+export {
+  fetchCharacter,
+  fetchCharacterComics,
+  fetchCharacterSeries,
+  getCharacters,
+};

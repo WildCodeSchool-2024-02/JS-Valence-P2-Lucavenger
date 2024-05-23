@@ -7,26 +7,6 @@ h1 {
   text-align: center;
   font-size: 5rem;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-img {
-  width: 400px;
-  height: auto;
-  margin-right: 20px;
-}
-
 p {
   margin: 0;
   font-size: 1.2em;
@@ -54,6 +34,7 @@ li p {
   z-index: -1;
   opacity: 0.5;
   pointer-events: none;
+  filter: brightness(50%) contrast(80%);
 }
 
 .character-details {
@@ -67,19 +48,8 @@ li p {
   z-index: 1;
 }
 
-h2 {
-  margin-top: 20px;
-  font-size: 24px;
-}
-
-.character-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
 .character-info img {
+  width: 300px;
   max-width: 300px;
   border-radius: 8px;
 }

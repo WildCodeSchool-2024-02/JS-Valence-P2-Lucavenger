@@ -1,13 +1,13 @@
-import axios from "axios";
 import ColorThief from "colorthief";
-import CryptoJS from "crypto-js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../Styles/CharactereDetail.css"; // Assurez-vous que le nom du fichier CSS est correct
+import "../Styles/CharacterDetail.css";
+import BottomNavBar from "../components/BottomNavBar";
 import Comics from "../components/Comics";
 import Loading from "../components/Loading";
-import SearchBar from "../components/SearchBar";
-import { getCharacters } from "../services/Api";
+import NavBar from "../components/NavBar";
+import Series from "../components/Series";
+import { fetchCharacter, getCharacters } from "../services/Api";
 
 function CharacterDetailPage() {
   const { characterId } = useParams();
@@ -15,29 +15,18 @@ function CharacterDetailPage() {
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
   const [bgColor, setBgColor] = useState("#000");
+  const [filter, setFilter] = useState("all"); // État pour stocker le filtre sélectionné
+
   useEffect(() => {
-    const fetchCharacter = async () => {
+    const fetchCharacterData = async () => {
       try {
-        const PUBLIC_KEY = "802465d01a9194dcef2b3def7f3eeeb5";
-        const PRIVATE_KEY = "f04d78d769814078851b5f2a176e86c3ab919ad6";
-        const timestamp = new Date().getTime().toString();
-        const hash = CryptoJS.MD5(
-          `${timestamp}${PRIVATE_KEY}${PUBLIC_KEY}`
-        ).toString();
-        const response = await axios.get(
-          `https://gateway.marvel.com/v1/public/characters/${characterId}`,
-          {
-            params: {
-              apikey: PUBLIC_KEY,
-              ts: timestamp,
-              hash,
-            },
-          }
-        );
-        setCharacter(response.data.data.results[0]);
+        const characterData = await fetchCharacter(characterId);
+        setCharacter(characterData);
+
         const img = new Image();
         img.crossOrigin = "Anonymous";
-        img.src = `${response.data.data.results[0].thumbnail.path}.${response.data.data.results[0].thumbnail.extension}`;
+        img.src = `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`;
+
         img.onload = () => {
           const colorThief = new ColorThief();
           const dominantColor = colorThief.getColor(img);
@@ -49,8 +38,10 @@ function CharacterDetailPage() {
         setLoading(false);
       }
     };
-    fetchCharacter();
+
+    fetchCharacterData();
   }, [characterId]);
+
   const handleSearch = async (query) => {
     try {
       const characters = await getCharacters(query);
@@ -59,16 +50,23 @@ function CharacterDetailPage() {
       console.error("Erreur lors de la récupération des suggestions:", error);
     }
   };
+
   const handleSuggestionClick = () => {
     setSuggestions([]);
   };
+
+  const handleFilterChange = (selectedFilter) => {
+    setFilter(selectedFilter);
+  };
+
   if (loading) {
     return <Loading />;
   }
+
   return (
     <div className="character-details">
       <div className="background-filter" style={{ backgroundColor: bgColor }} />
-      <SearchBar
+      <NavBar
         onSearch={handleSearch}
         suggestions={suggestions}
         onSuggestionClick={handleSuggestionClick}
@@ -76,7 +74,7 @@ function CharacterDetailPage() {
       {character && (
         <>
           <div className="character-info">
-            <div className="imageBox">
+            <div className="card">
               <img
                 src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                 alt={character.name}
@@ -88,10 +86,17 @@ function CharacterDetailPage() {
               <p>{character.description}</p>
             </div>
           </div>
-          <Comics characterId={character.id} />
+          <BottomNavBar handleFilterChange={handleFilterChange} />
+          {(filter === "all" || filter === "comics") && (
+            <Comics characterId={character.id} />
+          )}
+          {(filter === "all" || filter === "series") && (
+            <Series characterId={character.id} />
+          )}
         </>
       )}
     </div>
   );
 }
+
 export default CharacterDetailPage;

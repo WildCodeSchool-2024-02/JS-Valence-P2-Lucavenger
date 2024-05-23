@@ -11,8 +11,9 @@
 
 .comics h2 {
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 40px;
   color: #fff;
+  padding: 20px;
 }
 
 .comics-list {

@@ -1,0 +1,25 @@
+.series-list {
+  margin-top: 20px;
+}
+
+.series-list h3 {
+  font-family: "Marvel", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.series-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.series-list li {
+  margin-bottom: 20px;
+}
+
+.series-image {
+  max-width: 200px;
+  display: block;
+  margin-bottom: 10px;
+}
